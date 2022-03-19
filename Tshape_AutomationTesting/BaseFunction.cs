@@ -60,5 +60,22 @@ namespace Tshape_AutomationTesting
 			}
 		}
 
+		public static int TotalBill(int item1, int item2, int item3)
+		{
+			int sum= 0;
+			sum = (item1 * 5000) + (item2 * 3000) + SumItem3(item3);
+			return sum;
+		}
+
+		public static int SumItem3(int item3)
+		{
+			int sum_item3 = 0;
+			if (item3 > 2)
+			{
+				sum_item3 = (item3 * 7000) - 5000;
+			}
+			else { sum_item3 = item3 * 5000; }
+			return sum_item3;
+		}
 	}
 }

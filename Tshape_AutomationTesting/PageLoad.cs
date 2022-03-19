@@ -18,15 +18,13 @@ namespace Tshape_AutomationTesting
             string projPath = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
             var coursesObj = BaseFunction.ReadJSon<IDictionary<string, List<Course>>>($"{projPath}\\data.json");
             var courses = coursesObj["courses"];
-            foreach (var course in courses)
-            {
-                Console.WriteLine($"courseId: {course.CourseId}, courseName: {course.CourseName}, level: {course.Level}");
-            }
+            Question3B(courses);
 
             Question3C(courses);
             Question3D(courses);
             Question3E(courses);
             Question3F(courses);
+            Question4();
         }
         public static void Question1()
         {
@@ -45,18 +43,39 @@ namespace Tshape_AutomationTesting
             Console.WriteLine("---------------------");
         }
 
+        public static void Question3B(List<Course> courses)
+        {
+            Console.WriteLine("Question 3B: The array of course: ");
+
+            foreach (var course in courses)
+            {
+                Console.WriteLine($"courseId: {course.CourseId}");
+                Console.WriteLine($"courseName: {course.CourseName}");
+                Console.WriteLine($"instructor: {course.Instructor}");
+                Console.WriteLine($"startDate: {course.StartDate}");
+                Console.WriteLine($"lessons: {course.Lessons}");
+                Console.WriteLine($"level: {course.Level}");
+                Console.WriteLine("---------------------");
+            }
+        }
+
         public static void Question3C(List<Course> courses)
         {
             Console.Write("Please input Level to filter: ");
             int levelValue1 = Int32.Parse(Console.ReadLine());
             var filteredLevelCourses = courses.FilterLevel(levelValue1);
 
+            Console.WriteLine("Question 3C: Filter course by Level: ");
             foreach (var course in filteredLevelCourses)
             {
-                Console.WriteLine($"courseId: {course.CourseId}, {course.CourseName}");
+                Console.WriteLine($"courseId: {course.CourseId}");
+                Console.WriteLine($"courseName: {course.CourseName}");
+                Console.WriteLine($"instructor: {course.Instructor}");
+                Console.WriteLine($"startDate: {course.StartDate}");
+                Console.WriteLine($"lessons: {course.Lessons}");
+                Console.WriteLine($"level: {course.Level}");
+                Console.WriteLine("---------------------");
             }
-            Console.WriteLine("---------------------");
-
         }
 
         public static void Question3D(List<Course> courses)
@@ -65,11 +84,17 @@ namespace Tshape_AutomationTesting
             string instructorlValue = Console.ReadLine();
             var filteredInstructorlCourses = courses.FilterInstructor(instructorlValue);
 
+            Console.WriteLine("Question 3D: Filter course by Instructor: ");
             foreach (var course in filteredInstructorlCourses)
             {
-                Console.WriteLine($"courseId: {course.CourseId}, {course.CourseName}");
+                Console.WriteLine($"courseId: {course.CourseId}");
+                Console.WriteLine($"courseName: {course.CourseName}");
+                Console.WriteLine($"instructor: {course.Instructor}");
+                Console.WriteLine($"startDate: {course.StartDate}");
+                Console.WriteLine($"lessons: {course.Lessons}");
+                Console.WriteLine($"level: {course.Level}");
+                Console.WriteLine("---------------------");
             }
-            Console.WriteLine("---------------------");
         }
 
         public static void Question3E(List<Course> courses)
@@ -81,11 +106,17 @@ namespace Tshape_AutomationTesting
 
             var filteredLessonAndLevelCourses = courses.FilterLessons(lessonValue).FilterLevel(levelValue2);
 
+            Console.WriteLine("Question 3D: Filter course by Lessons and Level: ");
             foreach (var course in filteredLessonAndLevelCourses)
             {
-                Console.WriteLine($"courseId: {course.CourseId}, {course.CourseName}");
+                Console.WriteLine($"courseId: {course.CourseId}");
+                Console.WriteLine($"courseName: {course.CourseName}");
+                Console.WriteLine($"instructor: {course.Instructor}");
+                Console.WriteLine($"startDate: {course.StartDate}");
+                Console.WriteLine($"lessons: {course.Lessons}");
+                Console.WriteLine($"level: {course.Level}");
+                Console.WriteLine("---------------------");
             }
-            Console.WriteLine("---------------------");
         }
 
         public static void Question3F(List<Course> courses)
@@ -95,11 +126,43 @@ namespace Tshape_AutomationTesting
 
             var filteredCourseName = courses.FilterName(nameValue);
 
+            Console.WriteLine("Question 3D: Filter course by Course name: ");
             foreach (var course in filteredCourseName)
             {
-                Console.WriteLine($"courseId: {course.CourseId}, {course.CourseName}");
+                Console.WriteLine($"courseId: {course.CourseId}");
+                Console.WriteLine($"courseName: {course.CourseName}");
+                Console.WriteLine($"instructor: {course.Instructor}");
+                Console.WriteLine($"startDate: {course.StartDate}");
+                Console.WriteLine($"lessons: {course.Lessons}");
+                Console.WriteLine($"level: {course.Level}");
+                Console.WriteLine("---------------------");
             }
+        }
+
+        public static void Question4()
+        {
+            Console.Write("Coca: ");
+            int item1 = Int32.Parse(Console.ReadLine());
+            Console.Write("Noodle: ");
+            int item2 = Int32.Parse(Console.ReadLine());
+            Console.Write("Orange: ");
+            int item3 = Int32.Parse(Console.ReadLine());
+
+            int sum_item1 = item1 * 5000;
+            int sum_item2 = item2 * 3000;
+            int sum_item3 = BaseFunction.SumItem3(item3);
+            int sum = BaseFunction.TotalBill(item1, item2, item3);
+
+            Console.WriteLine("Input");
+            Console.WriteLine("\tCoca: "+item1);
+            Console.WriteLine("\tNoodle: " + item2);
+            Console.WriteLine("\tOrange: " + item3);
+            Console.WriteLine("Output");
+            Console.WriteLine("\tCoca " + item1 + " " + sum_item1);
+            Console.WriteLine("\tNoodle " + item2 + " " + sum_item2);
+            Console.WriteLine("\tOrange " + item3 + " " + sum_item3);
             Console.WriteLine("---------------------");
+            Console.WriteLine("\tTotal " + sum);
         }
     }
 }
